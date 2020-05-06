@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_lectures_greph">
+
+    <fragment
+        android:id="@+id/nav_course_list"
+        android:name="com.maris_skrivelis.gada_projekts.course_list"
+        android:label="@string/title_course_list"
+        tools:layout="@layout/fragment_course_list" />
+
+    <fragment
+        android:id="@+id/nav_lectures_greph"
+        android:name="com.maris_skrivelis.gada_projekts.lectures_graph"
+        android:label="@string/title_lectures_graph"
+        tools:layout="@layout/fragment_lectures_graph" />
+</navigation>

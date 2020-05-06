@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_course_list"
+            android:icon="@drawable/ic_via_app_arrow"
+            android:title="@string/title_course_list"
+            android:fontFamily="@font/via_font" />
+        <item
+            android:id="@+id/nav_lectures_greph"
+            android:icon="@drawable/ic_via_app_arrow"
+            android:title="@string/title_lectures_graph"
+            android:fontFamily="@font/via_font"/>
+        <item
+            android:id="@+id/switchToggleButton"
+            android:checkable="false"
+            android:checked="false"
+            android:enabled="false"
+            android:title="Night mode"
+            app:actionLayout="@layout/switch_menu"
+            app:showAsAction="never" />
+    </group>
+</menu>

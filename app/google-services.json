@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "651772475726",
+    "firebase_url": "https://via-app-de32a.firebaseio.com",
+    "project_id": "via-app-de32a",
+    "storage_bucket": "via-app-de32a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651772475726:android:a0aadbc66c71902a0ec61f",
+        "android_client_info": {
+          "package_name": "com.maris_skrivelis.gada_projekts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651772475726-e384m7vd8p0n304g3r07rd1e6nbohv3q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maris_skrivelis.gada_projekts",
+            "certificate_hash": "bdf230b0760c3d1f26140fd8ec3b22925e02ab08"
+          }
+        },
+        {
+          "client_id": "651772475726-oopvte5rqbpa9elv6d6vt3pj64m09l4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnnODG1HsuRwBoSKmlyHIqRKrxoTsfTww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651772475726-oopvte5rqbpa9elv6d6vt3pj64m09l4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
