@@ -16,12 +16,10 @@
             android:title="@string/title_lectures_graph"
             android:fontFamily="@font/via_font"/>
         <item
-            android:id="@+id/switchToggleButton"
+            android:id="@+id/switchs"
             android:checkable="false"
-            android:checked="false"
-            android:enabled="false"
-            android:title="Night mode"
-            app:actionLayout="@layout/switch_menu"
-            app:showAsAction="never" />
+            android:fontFamily="@font/via_font"
+            android:visible="false"
+            app:actionLayout="@layout/drawer_switch_buttons" />
     </group>
 </menu>

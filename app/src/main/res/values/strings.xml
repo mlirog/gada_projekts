@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">gada_projekts</string>
+    <string name="app_name">ViA Lekcijas</string>
 
     <string name="title_lectures_graph">Lekciju grafiks</string>
     <string name="title_course_list">Kursa izvēle</string>
     <string name="coursepicker_program">Programma</string>
     <string name="coursepicker_grade">Gads</string>
+    <string name="show_lecture_breaks">Rādīt pārtraukumus</string>
+    <string name="join_lectures">Sapludināt lekcijas</string>
 
     <string name="url_course_json" translatable="false">https://lekcijas.va.lv/lekcijas_android/getAllCourseData.php</string>
     <string name="url_lectures_json" translatable="false">https://lekcijas.va.lv/lekcijas_android/getLecturesForSelectedDay.php</string>
@@ -14,7 +16,6 @@
     <string name="courses_loading_text_creatingcourses">Pārveido saņemtos datus..</string>
     <string name="courses_loading_text_displayingcourses">Atspoguļo iegūtos datus..</string>
     <string name="courses_loading_text_finishing">Pabeidz ielādi..</string>
-    <string name="change_theme">Mainīt motīvu</string>
 
     <string name="course_error_text">Kļūda kursu ielādē</string>
 

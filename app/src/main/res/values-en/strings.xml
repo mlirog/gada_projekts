@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ViA Lectures</string>
+
+    <string name="title_lectures_graph">Lecture graph</string>
+    <string name="title_course_list">Course list</string>
+    <string name="coursepicker_program">Program</string>
+    <string name="coursepicker_grade">Study year</string>
+    <string name="show_lecture_breaks">Show breaks</string>
+    <string name="join_lectures">Join lectures</string>
+
+    <string name="courses_loading_text">Loading course list..</string>
+    <string name="courses_loading_text_recieveddata">Recieving data from server..</string>
+    <string name="courses_loading_text_creatingcourses">Converts recieved data..</string>
+    <string name="courses_loading_text_displayingcourses">Displays recieved data..</string>
+    <string name="courses_loading_text_finishing">Finishing up..</string>
+
+    <string name="course_error_text">Error loading course list</string>
+
+    <string name="save">Save</string>
+</resources>

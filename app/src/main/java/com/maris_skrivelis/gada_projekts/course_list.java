@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.NumberPicker;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -84,6 +87,9 @@ public class course_list extends Fragment {
             }
             }
         });
+
+        hideSwitches();
+
         return root;
     }
 
@@ -251,5 +257,11 @@ public class course_list extends Fragment {
         }else {
             Snackbar.make(root, "Izvēle nedrīkst saturēt tukšumus!", Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    private void hideSwitches(){
+        //hides switches in navdrawer
+        NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+        navigationView.getMenu().findItem(R.id.switchs).setVisible(false);
     }
 }

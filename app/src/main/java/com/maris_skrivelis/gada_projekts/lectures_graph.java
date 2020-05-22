@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,8 +48,8 @@ public class lectures_graph extends Fragment {
     private OnFragmentInteractionListener mListener;
     private LectureObject[] all_lectures;
     private String lectures_url;
-    private AlertDialog loading;
     private Calendar calendar;
+    Switch show_breaks, join_lectures;
 
 
     public lectures_graph() {
@@ -114,6 +117,8 @@ public class lectures_graph extends Fragment {
         //loads today lectures on load
         loadDayLectures(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 
+        //loads switchs in nav drawer
+        loadSwitchs();
 
         // Inflate the layout for this fragment
         return root;
@@ -192,17 +197,20 @@ public class lectures_graph extends Fragment {
                 //shows loading screen
                 showLoadingScreen();
                 try {
+                    //converts response into object of arrays
                     JSONObject jobject = new JSONObject(response);
+                    //JSON array containing arrays
                     JSONArray jsonArray = jobject.getJSONArray("result");
                     all_lectures = new LectureObject[jsonArray.length()];
 
-                    //for each json object found
+                    //for each array
                     for (int i = 0; i < jsonArray.length(); i++) {
                         String tmp = jsonArray.getString(i);
                         JSONObject jsonObject1 = new JSONObject(tmp.substring(tmp.indexOf("{"), tmp.lastIndexOf("}") + 1));
 
-                        //create lecture object
-                        all_lectures[i] = new LectureObject(jsonObject1.getString("nodala"), jsonObject1.getString("kurss"), jsonObject1.getString("lektors"), jsonObject1.getString("sakums"), jsonObject1.getString("beigas"), jsonObject1.getString("nosaukums"), jsonObject1.getString("iela"));
+                        //create and add new lecture object into array
+                        all_lectures[i] = new LectureObject(jsonObject1.getString("nodala"), jsonObject1.getString("kurss"), jsonObject1.getString("lektors"),
+                                jsonObject1.getString("sakums"), jsonObject1.getString("beigas"), jsonObject1.getString("nosaukums"), jsonObject1.getString("iela"));
                     }
 
                     //display lectures
@@ -283,6 +291,27 @@ public class lectures_graph extends Fragment {
 
         //request lectures for selected day
         loadDayLectures(dateString);
+    }
+
+    private void loadSwitchs(){
+        NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
+
+        navigationView.getMenu().findItem(R.id.switchs).setVisible(true);
+
+        //lecture breaks option listener
+        show_breaks = navigationView.getMenu().findItem(R.id.switchs).getActionView().findViewById(R.id.switch_show_breaks);
+        show_breaks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(getActivity(), "Breaks:"+isChecked, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        join_lectures = navigationView.getMenu().findItem(R.id.switchs).getActionView().findViewById(R.id.switch_join_lectures);
+        join_lectures.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(getActivity(), "Join:"+isChecked, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
 

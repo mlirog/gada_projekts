@@ -4,7 +4,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="viaDesignerGreen">#84ad47</color>
     <color name="viaOrange">#F15A26</color>
-
-
+    <color name="no_internet_background">#ff4c01</color>
+    <color name="black_overlay">#66000000</color>
 
 </resources>

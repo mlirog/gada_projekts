@@ -43,12 +43,14 @@
             android:layout_marginBottom="50dp"
             android:clickable="true"
             android:contentDescription="@string/app_name"
+            android:scaleType="center"
             android:src="@drawable/ic_calendar"
             app:backgroundTint="@color/colorPrimary"
             app:borderWidth="1dp"
-            app:fabSize="mini"
+            app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:maxImageSize="@dimen/lectures_fab_icon_size" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -59,6 +61,7 @@
         android:background="#CCFFFFFF"
         android:contentDescription="@string/app_name"
         android:padding="@dimen/splash_logo_padding"
+        android:scaleType="center"
         android:src="@drawable/via"
         android:visibility="gone" />
 
