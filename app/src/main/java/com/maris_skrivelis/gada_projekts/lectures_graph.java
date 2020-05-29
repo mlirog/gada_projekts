@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -186,9 +187,16 @@ public class lectures_graph extends Fragment {
 
     private void loadDayLectures(String date) {
         showLoadingScreen();
+        //read some api params from memory
+        SharedPreferences pref = requireActivity().getSharedPreferences("lectures_api_params", Context.MODE_PRIVATE);
+        boolean api_join_lectures = pref.getBoolean("join_lectures", false);
+        boolean api_show_breaks = pref.getBoolean("show_breaks", false);
 
         //build GET request
         lectures_url = getString(R.string.url_lectures_json) + "?date=" + date + "&program=" + getSavedCourse() + "&lang=" + Locale.getDefault().getLanguage();
+        lectures_url += api_join_lectures ? "&join" : "";
+        lectures_url += api_show_breaks ? "&breaks" : "";
+
         RequestQueue requestQueue = Volley.newRequestQueue(root.getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, lectures_url, new Response.Listener<String>() {
 
@@ -296,20 +304,48 @@ public class lectures_graph extends Fragment {
     private void loadSwitchs(){
         NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
 
+        //swow switchs visible
         navigationView.getMenu().findItem(R.id.switchs).setVisible(true);
 
-        //lecture breaks option listener
+        //get saved switch positions
+        SharedPreferences pref = requireActivity().getSharedPreferences("lectures_api_params", Context.MODE_PRIVATE);
+
+        //find switch
         show_breaks = navigationView.getMenu().findItem(R.id.switchs).getActionView().findViewById(R.id.switch_show_breaks);
+        //change to last checked position
+        show_breaks.setChecked(pref.getBoolean("show_breaks", false));
+        //add listener
         show_breaks.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(getActivity(), "Breaks:"+isChecked, Toast.LENGTH_LONG).show();
+                SharedPreferences pref = requireActivity().getSharedPreferences("lectures_api_params", Context.MODE_PRIVATE);
+                //changes value
+                pref.edit().putBoolean("show_breaks", show_breaks.isChecked()).apply();
+
+                //prepare date string
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateString = sdf.format(calendar.getTime());
+
+                //relaod lectures with selected lectures
+                loadDayLectures(dateString);
             }
         });
-
+        //find switch
         join_lectures = navigationView.getMenu().findItem(R.id.switchs).getActionView().findViewById(R.id.switch_join_lectures);
+        //change to last checked position
+        join_lectures.setChecked(pref.getBoolean("join_lectures", false));
+        //add listener
         join_lectures.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(getActivity(), "Join:"+isChecked, Toast.LENGTH_LONG).show();
+                SharedPreferences pref = requireActivity().getSharedPreferences("lectures_api_params", Context.MODE_PRIVATE);
+                //changes value
+                pref.edit().putBoolean("join_lectures", join_lectures.isChecked()).apply();
+
+                //prepare date string
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String dateString = sdf.format(calendar.getTime());
+
+                //relaod lectures with selected lectures
+                loadDayLectures(dateString);
             }
         });
     }
